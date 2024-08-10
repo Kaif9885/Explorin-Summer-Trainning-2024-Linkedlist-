@@ -1,0 +1,31 @@
+class Solution {
+  public:
+    /* Should return data of middle node. If linked list is empty, then -1 */
+    int getMiddle(Node* head) {
+        // =============code here (1st Rule)===========//
+        // int count = 0;
+        // Node*current = head;
+        // while(current!=NULL){
+        //     count++;
+        //     current=current->next;
+        // }
+        // count=count/2+1;
+        // current=head;
+        // while(current!=NULL && count!=1){
+        //     count--;
+        //     current=current->next;
+        // }
+        // return current->data;
+        
+              // =============code here (1st Rule)===========//
+        Node* fast = head;
+        Node* slow = head;
+        while(fast != NULL && fast->next != NULL)
+        {
+            slow = slow->next;
+            fast = fast->next->next;
+        }
+        return slow->data;
+
+    }
+};
