@@ -1,0 +1,43 @@
+class Solution{
+  public:
+    Node* findIntersection(Node* head1, Node* head2)
+    {
+        vector<int> arr(100001,0);
+        Node* current = head1;
+        while(current != NULL)
+        {
+            arr[current->data]++;
+            current = current->next;
+        }
+         current = head2;
+        while(current != NULL)
+        {
+            arr[current->data]++;
+            current = current->next;
+        }
+        current = head1;
+        Node* head3 = NULL;
+        while(current != NULL)
+        {
+            if(arr[current->data] == 2)
+            {
+                head3 = new Node(current->data);
+                current = current->next;
+                break;
+            }
+            current = current->next;
+        }
+        Node* temp = head3;
+        while(current != NULL)
+        {
+            if(arr[current->data] == 2)
+            {
+                Node* temp2 = new Node(current->data);
+                temp->next = temp2;
+                temp = temp2;
+            }
+            current = current->next;
+        }
+        return head3;
+    }
+};
